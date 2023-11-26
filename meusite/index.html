@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Renan Oliveira Website</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" integrity="sha512-oHDEc8Xed4hiW6CxD7qjbnI+B07vDdX7hEPTvn9pSZO1bcRqHp8mj9pyr+8RVC2GmtEfI2Bi9Ke9Ass0as+zpg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
@@ -34,8 +35,18 @@
                 Olhe minha página no LinkedIn: <a href=https://www.linkedin.com/in/renan-s-de-oliveira-1a0317b9/ target="_blank"> Clique Aqui</a>
                 e Github: <a href=https://github.com/RenanSdeOliveira target="_blank"> Clique Aqui</a>
             </p>
+            <button id="btnTeste" type="button">
+                Teste
+            </button>
+            <script>
+                const btnTeste = document.getElementById("btnTeste")
+                btnTeste.addEventListener("click", function(){
+                    console.log("Clickou no botão teste!")
+                })
+            </script>
         </article>
     </section>
+
     <footer>
         <ul class="contacts_list">
             <li>
