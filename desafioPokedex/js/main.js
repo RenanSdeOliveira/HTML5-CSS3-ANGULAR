@@ -1,10 +1,11 @@
 
-
-const offset = 0
+const maxRecords = 151
+let offset = 0
 const limit = 20
 const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
 
 const pokemonList = document.getElementById('pokemonList')
+const loadMoreButton = document.getElementById('loadMoreButton')
 
 pokeApi.getPokemons().then((pokemons = []) => {
     const newHTML = pokemons.map(convertPokemonToHTML).join('')
@@ -12,22 +13,42 @@ pokeApi.getPokemons().then((pokemons = []) => {
 
 })
 
-function convertPokemonTypeToHTML(pokemonTypes){
-    return pokemonTypes.map((typeSlot) => `<li class="type"> ${typeSlot.type.name} </li>`)
-}
 
 function convertPokemonToHTML(pokemon) {
     return `
-        <li class="pokemon">
-            <span class="number">#${pokemon.id}</span> 
+        <li class="pokemon ${pokemon.type}">
+            <span class="number">#${pokemon.number}</span> 
             <span class="name">${pokemon.name}</span> 
             <div class="detail">
                 <ol class="types">
-                    ${convertPokemonTypeToHTML(pokemon.types).join(' ')}
+                ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
                 </ol>
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png" alt="${pokemon.name}">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.number}.png" alt="${pokemon.name}">
             </div>
     
         </li>
     `
 }
+
+function loadPokemonItens(offset, limit) {
+    pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+        const newHtml = pokemons.map(convertPokemonToHTML).join('')
+        pokemonList.innerHTML += newHtml
+    })
+}
+
+loadPokemonItens(offset, limit)
+
+loadMoreButton.addEventListener('click', () => {
+    offset += limit
+    const qtdRecordsWithNexPage = offset + limit
+
+    if (qtdRecordsWithNexPage >= maxRecords) {
+        const newLimit = maxRecords - offset
+        loadPokemonItens(offset, newLimit)
+
+        loadMoreButton.parentElement.removeChild(loadMoreButton)
+    } else {
+        loadPokemonItens(offset, limit)
+    }
+})
