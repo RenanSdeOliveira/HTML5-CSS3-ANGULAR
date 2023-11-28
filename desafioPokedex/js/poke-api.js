@@ -29,7 +29,6 @@ pokeApi.getPokemons = (offset = 0, limit = 20) => {
         .then((detailRequests) => Promise.all(detailRequests))
         .then((pokemonsDetails => pokemonsDetails))
         .catch(function (error) { console.error(error) })
-        .finally(function () { console.log('Requisição concluída!') })
 
 }
 

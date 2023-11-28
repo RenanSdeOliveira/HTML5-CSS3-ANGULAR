@@ -30,18 +30,22 @@ function convertPokemonToHTML(pokemon) {
     `
 }
 
-function loadPokemonItens(offset, limit) {
-    pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
-        const newHtml = pokemons.map(convertPokemonToHTML).join('')
-        pokemonList.innerHTML += newHtml
-    })
-}
 
-loadPokemonItens(offset, limit)
+
+
 
 loadMoreButton.addEventListener('click', () => {
     offset += limit
     const qtdRecordsWithNexPage = offset + limit
+    
+    loadPokemonItens(offset, limit)
+
+    function loadPokemonItens(offset, limit) {
+        pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+            const newHtml = pokemons.map(convertPokemonToHTML).join('')
+            pokemonList.innerHTML += newHtml
+        })
+    }
 
     if (qtdRecordsWithNexPage >= maxRecords) {
         const newLimit = maxRecords - offset
@@ -52,3 +56,4 @@ loadMoreButton.addEventListener('click', () => {
         loadPokemonItens(offset, limit)
     }
 })
+
