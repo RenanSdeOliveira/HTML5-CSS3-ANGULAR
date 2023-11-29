@@ -18,10 +18,10 @@ function convertPokemonToHTML(pokemon) {
     return `
         <li class="pokemon ${pokemon.type}">
             <span class="number">#${pokemon.number}</span> 
-            <span class="name">${pokemon.name}</span> 
+            <span class="name">${((pokemon.name).charAt(0).toUpperCase()+(pokemon.name).slice(1))}</span> 
             <div class="detail">
                 <ol class="types">
-                ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+                ${pokemon.types.map((type) => `<li class="type ${type}">${((type).charAt(0).toUpperCase()+(type).slice(1))}</li>`).join('')}
                 </ol>
                 <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.number}.png" alt="${pokemon.name}">
             </div>
