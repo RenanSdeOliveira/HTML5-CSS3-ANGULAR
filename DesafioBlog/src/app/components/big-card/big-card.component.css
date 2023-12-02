@@ -1,0 +1,26 @@
+.container__big-card{
+    width: 500px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start;
+}
+.big-card__image{
+    margin: 0;
+}
+
+.big-card__date{
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+.big-card__title{
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.big-card__description{
+    font-size: 20px;
+    
+}

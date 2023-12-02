@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    margin: 1rem;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+    color: azure;
+    font-family: 'Oswald', sans-serif;
+   
+}

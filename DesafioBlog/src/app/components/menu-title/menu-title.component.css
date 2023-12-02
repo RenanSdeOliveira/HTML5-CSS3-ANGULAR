@@ -1,0 +1,25 @@
+.container-menu-title{
+    margin-top: 15px;
+    
+}
+
+.container-menu-title h1{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.titulo{
+    font-size: 100px;
+    font-weight: bold;
+
+}
+
+.by{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    color: aqua;
+}
