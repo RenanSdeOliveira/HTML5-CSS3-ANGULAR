@@ -1,1 +1,17 @@
-<p>small-card works!</p>
+<div class="container__small-card">
+    <div class="small-card__image">
+        <img src="{{image}}" 
+        alt="Imagem Secundária" 
+        height="150px"
+        width="275px"
+        srcset="" >
+    </div>
+    <div class="small-card__date">
+        {{date}}
+    </div>
+    <div class="small-card__title">
+        <a [routerLink]="['content', id]">{{title}}</a>
+        <hr>
+    </div>
+
+</div>
